@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @author maozd
  * @date 2019/9/14 14:56
  */
-@Api("测试类")
+@Api(value = "测试类",description = "Swagger test")
 @RestController
 @RequestMapping("test")
 public class HelloController {
@@ -23,7 +23,6 @@ public class HelloController {
     @Resource
     private HelloService helloService;
 
-//    @RequestParam(name = "name", value = "姓名", required = true)
     @ApiOperation(value = "测试接口", notes = "测试接口")
     @ApiImplicitParam(name = "name", value = "姓名", required = true, paramType = "query", dataType = "String")
     @GetMapping("/hello")

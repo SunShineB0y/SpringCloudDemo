@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: xyptservice
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8082/eureka
+#swagger:
+#  base-package: com.demo.xyptservice.web
