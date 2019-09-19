@@ -4,6 +4,6 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8082/eureka
+      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka,http://localhost:8003/eureka
 #swagger:
 #  base-package: com.demo.xyptservice.web
