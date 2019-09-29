@@ -1,6 +1,9 @@
 spring:
   application:
     name: xyptservice
+// 默认端口号，用java jar命令可以指定端口号，java -java XXX.jar --server.port = 8961
+server:
+  port: 8960
 eureka:
   client:
     service-url:
