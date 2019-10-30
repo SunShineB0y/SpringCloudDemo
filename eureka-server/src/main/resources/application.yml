@@ -1,44 +1,63 @@
+########### EUREKA注册中心的单节点配置, 直接启动即可###########
 spring:
   application:
     name: eureka-server
-  profiles: peer1
+
 server:
-  port: 8001
+  port: 8000
+
 eureka:
-  instance:
-    hostname: peer1
   client:
-    serviceUrl:
-      defaultZone: http://peer2:8002/eureka/,http://peer3:8003/eureka/
-    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+    fetch-registry: false
     register-with-eureka: true
----
-spring:
-  application:
-    name: eureka-server
-  profiles: peer2
-server:
-  port: 8002
-eureka:
-  instance:
-    hostname: peer2
-  client:
-    serviceUrl:
-      defaultZone: http://peer1:8001/eureka/,http://peer3:8003/eureka/
-    fetch-registry: true
-    register-with-eureka: true
----
-spring:
-  application:
-    name: eureka-server
-  profiles: peer3
-server:
-  port: 8003
-eureka:
-  instance:
-    hostname: peer3
-  client:
-    serviceUrl:
-      defaultZone: http://peer1:8001/eureka/,http://peer2:8002/eureka/
-    fetch-registry: false #由于注册中心的职责就是维护服务实例，它并不需要检索服务，所以设置成false
-    register-with-eureka: true #表示向服务注册中心注册自己
+#  instance:
+#    hostname: {spring.cloud.client.ipAddress}
+
+########### EUREKA注册中心的高可用配置,启动时需分别指定--spring.profiles.active参数 ###########
+
+#spring:
+#  application:
+#    name: eureka-server
+#  profiles: peer1
+#server:
+#  port: 8001
+#eureka:
+#  instance:
+#    hostname: peer1
+#  client:
+#    serviceUrl:
+#      defaultZone: http://peer2:8002/eureka/,http://peer3:8003/eureka/
+#    fetch-registry: true
+#    register-with-eureka: true
+#---
+#spring:
+#  application:
+#    name: eureka-server
+#  profiles: peer2
+#server:
+#  port: 8002
+#eureka:
+#  instance:
+#    hostname: peer2
+#  client:
+#    serviceUrl:
+#      defaultZone: http://peer1:8001/eureka/,http://peer3:8003/eureka/
+#    fetch-registry: true
+#    register-with-eureka: true
+#---
+#spring:
+#  application:
+#    name: eureka-server
+#  profiles: peer3
+#server:
+#  port: 8003
+#eureka:
+#  instance:
+#    hostname: peer3
+#  client:
+#    serviceUrl:
+#      defaultZone: http://peer1:8001/eureka/,http://peer2:8002/eureka/
+#    fetch-registry: true #由于注册中心的职责就是维护服务实例，它并不需要检索服务，所以可设置成false
+#    register-with-eureka: true #表示向服务注册中心注册自己,优先级高于@EnableDiscoveryClient注解

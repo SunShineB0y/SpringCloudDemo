@@ -7,6 +7,9 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka,http://localhost:8003/eureka
+      ####  配置一个eureka注册中心地址，即单节点配置 ####
+      defaultZone: http://localhost:8000/eureka
+      ####  配置多个eureka注册中心地址，实现高可用  ####
+      #defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka,http://localhost:8003/eureka
 #swagger:
 #  base-package: com.demo.xyptservice.web
